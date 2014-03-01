@@ -13,7 +13,7 @@
 	$client = new Services_Twilio($sid, $token);
 echo "we are in functions\n";
 	function text($number, $message) {
-		echo "we are in text\n";
+		global $client, $phoneNumber;
 		$sms = $client->account->messages->sendMessage(
 			$phoneNumber,
 			// the number we are sending to
