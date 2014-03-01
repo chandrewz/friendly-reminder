@@ -1,4 +1,4 @@
 <?php
 	require '../functions.php';
-	text('7133677805', 'Hello!');
+	text('+17133677805', 'Hello!');
 ?>
