@@ -15,7 +15,7 @@
 	// Instantiate a new Twilio Rest Client
 	$client = new Services_Twilio($sid, $token, $version);
 
-	public function text($number, $message) {
+	function text($number, $message) {
 		$sms = $client->account->messages->sendMessage(
 			$phoneNumber,
 			// the number we are sending to
