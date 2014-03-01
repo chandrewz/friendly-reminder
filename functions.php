@@ -11,7 +11,8 @@
 
 	// Instantiate a new Twilio Rest Client
 	$client = new Services_Twilio($sid, $token);
-echo "we are in functions\n";
+
+	// sends a text message to a specified number
 	function text($number, $message) {
 		global $client, $phoneNumber;
 		$sms = $client->account->messages->sendMessage(
@@ -21,7 +22,29 @@ echo "we are in functions\n";
 			// the sms body
 			$message
 		);
-		// Display a confirmation message on the screen
-		echo "Sent message to $number\n";
+	}
+
+	function pg_connection_string() {
+		return 'dbname=db1rn4rj1g5jdl host=ec2-54-197-241-94.compute-1.amazonaws.com port=5432 user=mbykljryroouwe password=2QKn-hc70AaFuxzAvwj-Mh3f22 sslmode=require';
+	}
+
+	function connect() {
+		# Establish db connection
+		$db = pg_connect(pg_connection_string());
+		if (!$db) {
+			echo "Database connection error.";
+			return null;
+		}
+		return pg_query($db, "SELECT statement goes here");
+	}
+
+	function create() {
+		$db = pg_connect(pg_connection_string());
+		if (!$db) {
+			echo "Database connection error.";
+			return null;
+		}
+		echo "Database created?";
+		return pg_query($db, 'CREATE TABLE reminder(reminder_id serial, type text, to text, message text, time timestamp, sent boolean)');
 	}
 ?> 
