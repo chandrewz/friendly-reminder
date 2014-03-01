@@ -1,6 +1,6 @@
 <?php
 	// Include the Twilio PHP library
-	require '../Services/Twilio.php';
+	require 'Services/Twilio.php';
 
 	class Functions {
 

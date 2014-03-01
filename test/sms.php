@@ -47,6 +47,6 @@
 		);
 
 		// Display a confirmation message on the screen
-		echo "Sent message to $name";
+		echo "Sent message to $name\n";
 	}
 ?>
