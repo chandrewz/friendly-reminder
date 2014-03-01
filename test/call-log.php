@@ -15,8 +15,9 @@
 	try {
 		// Get Recent Calls
 		foreach ($client->account->calls as $call) {
-			echo "Call from $call->from to $call->to at $call->start_time of length $call->duration";
+			echo "Call from $call->from to $call->to at $call->start_time of length $call->duration\n";
 		}
 	} catch (Exception $e) {
 		echo 'Error: ' . $e->getMessage();
 	}
+?>
