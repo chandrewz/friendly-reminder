@@ -12,7 +12,9 @@
 	// Instantiate a new Twilio Rest Client
 	$client = new Services_Twilio($sid, $token);
 
-	// sends a text message to a specified number
+	/**
+	 * Sends a text message to a specified number
+	 */
 	function text($number, $message) {
 		global $client, $phoneNumber;
 		$sms = $client->account->messages->sendMessage(
@@ -24,32 +26,23 @@
 		);
 	}
 
+	/**
+	 * postgresql db connection string
+	 * init: CREATE TABLE reminder(reminder_id serial, reminder_type text, reminder_to text, reminder_message text, reminder_time timestamp, reminder_sent boolean);
+	 */
 	function pg_connection_string() {
 		return 'dbname=db1rn4rj1g5jdl host=ec2-54-197-241-94.compute-1.amazonaws.com port=5432 user=mbykljryroouwe password=2QKn-hc70AaFuxzAvwj-Mh3f22 sslmode=require';
 	}
 
-	function connect() {
+	/**
+	 * Adds a record to the database.
+	 */
+	function reminder($type, $to, $message, $timestamp) {
 		# Establish db connection
 		$db = pg_connect(pg_connection_string());
-		if (!$db) {
-			echo "Database connection error.";
-			return null;
-		}
-		return pg_query($db, "SELECT statement goes here");
+		if (!$db) return null;
+		$query = "INSERT INTO reminder(reminder_type, reminder_to, reminder_message, reminder_time) VALUES ($type, $to, $message, $timestamp)";
+		return pg_query($db, $query);
 	}
 
-	function create() {
-		$db = pg_connect(pg_connection_string());
-		if (!$db) {
-			echo "Database connection error.";
-			return null;
-		}
-		$result = pg_query($db, "CREATE TABLE reminder(reminder_id serial primary key, type text, to text, message text, time timestamp, sent boolean);");
-		if (!$result) {
-			echo "Query failed.";
-			return null;
-		}
-		echo "Created!";
-		return $result;
-	}
 ?> 
