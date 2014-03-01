@@ -41,7 +41,7 @@
 		# Establish db connection
 		$db = pg_connect(pg_connection_string());
 		if (!$db) return null;
-		$query = "INSERT INTO reminder(reminder_type, reminder_to, reminder_message, reminder_time) VALUES ('$type', '$to', '$message', '$timestamp');";
+		$query = "INSERT INTO reminder(reminder_type, reminder_to, reminder_message, reminder_time, reminder_sent) VALUES ('$type', '$to', '$message', '$timestamp', false);";
 		return pg_query($db, $query);
 	}
 

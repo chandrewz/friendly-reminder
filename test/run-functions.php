@@ -16,10 +16,10 @@
 	else echo 'Reminder not working';*/
 
 	$select = select();
-	if ($reminder) {
+	if ($select) {
 		while ($row = pg_fetch_row($select)) {
 			echo "Author: $row[0]  E-mail: $row[1]";
-			echo "$row<br />\n";
+			echo "$row<br/>\n";
 		}
 	}
 	else echo 'Select not working';
