@@ -45,4 +45,10 @@
 		return pg_query($db, $query);
 	}
 
+	function select() {
+		$db = pg_connect(pg_connection_string());
+		if (!$db) return null;
+		$query = 'SELECT * FROM reminder;';
+		return pg_query($db, $query);
+	}
 ?> 

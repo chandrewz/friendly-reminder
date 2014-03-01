@@ -9,9 +9,12 @@
 
 	date_default_timezone_set("America/Chicago");
 	$date = date('Y-m-d H:i:s');
-	echo "time: $date<br/>";
+	echo "Current time: $date<br/>";
 
 	$reminder = reminder('text', '7133677805', 'Yo yo', $date);
-	if ($reminder) echo $reminder;
+	if ($reminder) echo "$reminder<br/>";
 	else echo 'Reminder not working';
+	$select = select();
+	if ($reminder) echo "$select<br/>";
+	else echo 'Select not working';
 ?>
