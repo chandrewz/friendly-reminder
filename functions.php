@@ -44,7 +44,12 @@
 			echo "Database connection error.";
 			return null;
 		}
-		echo "Database created?";
-		return pg_query($db, 'CREATE TABLE reminder(reminder_id serial, type text, to text, message text, time timestamp, sent boolean)');
+		$result = pg_query($db, "CREATE TABLE reminder(reminder_id serial primary key, type text, to text, message text, time timestamp, sent boolean);");
+		if (!$result) {
+			echo "Query failed.";
+			return null;
+		}
+		echo "Created!";
+		return $result;
 	}
 ?> 
