@@ -4,15 +4,27 @@
 
 	class Functions {
 
-		// Set account sid and auth token
-		private $sid = 'AC609c3f7d32dfb4dddf8d3b79eac93f41';
-		private $token = 'f5fe765f35130f11b365a26059a9eed3';
+		// account sid and auth token
+		var $sid;
+		var $token;
 
 		// my twilio phone number
-		private $phoneNumber = '832-460-0899';
+		var $phoneNumber;
 
-		// Instantiate a new Twilio Rest Client
-		private $client = new Services_Twilio($sid, $token);
+		// Twilio Rest Client
+		var $client;
+
+		public function Functions() {
+			// Set account sid and auth token
+			$sid = 'AC609c3f7d32dfb4dddf8d3b79eac93f41';
+			$token = 'f5fe765f35130f11b365a26059a9eed3';
+
+			// my twilio phone number
+			$phoneNumber = '832-460-0899';
+
+			// Instantiate a new Twilio Rest Client
+			$client = new Services_Twilio($sid, $token);
+		}
 
 		public function text($number, $message) {
 			$sms = $client->account->messages->sendMessage(
