@@ -10,7 +10,7 @@
 	$token = 'f5fe765f35130f11b365a26059a9eed3';
 
 	// my twilio phone number
-	$phoneNumber = '8324600899';
+	$phoneNumber = '832-460-0899';
 
 	// Instantiate a new Twilio Rest Client
 	$client = new Services_Twilio($sid, $token, $version);
