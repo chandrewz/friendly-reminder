@@ -13,7 +13,7 @@
 
 	// Step 1: Download the Twilio-PHP library from twilio.com/docs/libraries, 
 	// and move it into the folder containing this file.
-	require "/twilio-php/Services/Twilio.php";
+	require "Services/Twilio.php";
 
 	// Step 2: set our AccountSid and AuthToken from www.twilio.com/user/account
 	$AccountSid = "AC609c3f7d32dfb4dddf8d3b79eac93f41";
@@ -49,3 +49,4 @@
 		// Display a confirmation message on the screen
 		echo "Sent message to $name";
 	}
+?>

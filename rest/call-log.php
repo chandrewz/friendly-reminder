@@ -1,6 +1,6 @@
 <?php
 	// Include the Twilio PHP library
-	require 'Services/Twilio.php';
+	require '/twilio-php/Services/Twilio.php';
 
 	// Twilio REST API version
 	$version = '2010-04-01';
