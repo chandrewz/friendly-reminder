@@ -1,4 +1,5 @@
 <?php
 	require '../functions.php';
-	text('+17133677805', 'Hello!');
+	$func = new Function();
+	$func->text('+17133677805', 'Hello!');
 ?>
