@@ -32,7 +32,9 @@ class Database {
 	 * init: CREATE TABLE reminder(reminder_id serial, reminder_type text, reminder_to text, reminder_message text, reminder_time timestamp, reminder_sent boolean);
 	 */
 	public function addReminder($type, $to, $message, $timestamp) {
-		$query = "INSERT INTO reminder(reminder_type, reminder_to, reminder_message, reminder_time, reminder_sent) VALUES ('$type', '$to', '$message', '$timestamp', false);";
+		$query = sprintf('INSERT INTO reminder(reminder_type, reminder_to, reminder_message, reminder_time, reminder_sent) VALUES ("%s", "%s", "%s", "%s", false);',
+			$type, $to, $message, $timestamp);
+		//$query = "INSERT INTO reminder(reminder_type, reminder_to, reminder_message, reminder_time, reminder_sent) VALUES ('$type', '$to', '$message', '$timestamp', false);";
 		return pg_query($this->db, $query);
 	}
 
@@ -43,7 +45,7 @@ class Database {
 	public function getReadyReminders() {
 		date_default_timezone_set('America/Chicago'); // using CST, because I'm in Austin!
 		$date = date('Y-m-d H:i:s');
-		$query = "SELECT * FROM reminder WHERE reminder_time <= $date AND reminder_sent is false;";
+		$query = "SELECT * FROM reminder WHERE reminder_time <= $date AND reminder_sent = false;";
 		return pg_query($this->db, $query);
 	}
 
