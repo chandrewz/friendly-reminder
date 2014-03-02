@@ -9,7 +9,7 @@
 	private $client;
 
 	function Contactor() {
-		$this->client = new Services_Twilio($sid, $token);
+		$this->client = new Services_Twilio($this->sid, $this->token);
 	}
 
 	/**
