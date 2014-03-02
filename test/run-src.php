@@ -13,8 +13,15 @@
 	if ($connected) {
 		echo 'Connected!<br/>';
 		date_default_timezone_set("America/Chicago");
-		$added = $db->addReminder('text', '7133677805', 'addReminder message', date('Y-m-d H:i:s'));
+		$date = date('Y-m-d H:i:s');
+		echo "Current time: $date";
+		$added = $db->addReminder('text', '7133677805', 'addReminder message', $date);
 		if ($added) echo 'Reminder added<br/>';
 		else echo 'addReminder failed<br/>';
+
+		$ready = $db->getReadyReminders();
+		if ($ready) {
+			echo implode($ready);
+		} else echo 'getReadyReminders() failed<br/>';
 	}
 	else echo 'Not connected :(<br/>';
