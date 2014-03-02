@@ -45,7 +45,8 @@ class Database {
 	public function getReadyReminders() {
 		date_default_timezone_set('America/Chicago'); // using CST, because I'm in Austin!
 		$date = date('Y-m-d H:i:s');
-		$query = "SELECT * FROM reminder WHERE reminder_time <= $date AND reminder_sent = false;";
+		$query = sprintf('SELECT * FROM reminder WHERE reminder_time <= "%s" AND reminder_sent = false;', $date);
+		//$query = "SELECT * FROM reminder WHERE reminder_time <= CURRENT_TIMESTAMP AND reminder_sent = false;";
 		return pg_query($this->db, $query);
 	}
 
