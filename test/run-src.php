@@ -1,5 +1,6 @@
 <?php
 	require '../src/Contactor.php';
+	require '../src/Database.php';
 
 	echo 'Begin text test.';
 	$contactor = new Contactor();
