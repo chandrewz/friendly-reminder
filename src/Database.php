@@ -13,7 +13,7 @@ class Database {
 	}
 
 	public function connect() {
-		$this->db = pg_connect($this->pg_connection_string());
+		$this->db = pg_connect($this->pgConnectionString());
 		if (!$this->db) return false;
 		return true;
 	}
@@ -24,7 +24,7 @@ class Database {
 	 */
 	public function pgConnectionString() {
 		//return 'dbname=db1rn4rj1g5jdl host=ec2-54-197-241-94.compute-1.amazonaws.com port=5432 user=mbykljryroouwe password=2QKn-hc70AaFuxzAvwj-Mh3f22 sslmode=require';
-		return "dbname=$this->dbname host=$this->host post=$this->post user=$this->user password=$this->password sslmode=require";
+		return "dbname=$this->dbname host=$this->host port=$this->port user=$this->user password=$this->password sslmode=require";
 	}
 
 	public function addReminder($type, $to, $message, $timestamp) {
