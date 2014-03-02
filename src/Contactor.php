@@ -1,6 +1,10 @@
 <?php
-	// Include the Twilio PHP library
-	require '../Services/Twilio.php';
+
+// Include the Twilio PHP library
+require '../Services/Twilio.php';
+
+class Contactor {
+
 	// Set account sid and auth token
 	private $sid = 'AC609c3f7d32dfb4dddf8d3b79eac93f41';
 	private $token = 'f5fe765f35130f11b365a26059a9eed3';
@@ -24,3 +28,5 @@
 			$message
 		);
 	}
+
+}
