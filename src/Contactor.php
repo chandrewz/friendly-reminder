@@ -16,7 +16,7 @@
 	 * Sends a text message to a specified number
 	 */
 	function text($number, $message) {
-		$sms = $client->account->messages->sendMessage(
+		$this->client->account->messages->sendMessage(
 			$this->phoneNumber,
 			// the number we are sending to
 			$number,
