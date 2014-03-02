@@ -51,4 +51,3 @@
 		$query = 'SELECT * FROM reminder;';
 		return pg_query($db, $query);
 	}
-?> 
