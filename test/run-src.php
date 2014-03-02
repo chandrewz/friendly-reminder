@@ -21,7 +21,7 @@
 
 		$ready = $db->getReadyReminders();
 		if ($ready) {
-			echo implode($ready);
+			echo print_r(pg_fetch_array($ready, NULL, PGSQL_ASSOC));
 		} else echo 'getReadyReminders() failed<br/>';
 	}
 	else echo 'Not connected :(<br/>';
