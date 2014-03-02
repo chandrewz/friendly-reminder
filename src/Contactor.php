@@ -8,14 +8,14 @@
 	private $phoneNumber = '832-460-0899';
 	private $client;
 
-	function Contactor() {
+	public function Contactor() {
 		$this->client = new Services_Twilio($this->sid, $this->token);
 	}
 
 	/**
 	 * Sends a text message to a specified number
 	 */
-	function text($number, $message) {
+	public function text($number, $message) {
 		$this->client->account->messages->sendMessage(
 			$this->phoneNumber,
 			// the number we are sending to
