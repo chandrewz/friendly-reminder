@@ -1,4 +1,5 @@
 <?php
+	header("Content-Type:text/plain");
 	if (isset($_GET['user'])) {
 		require_once('src/Database.php');
 		$db = new Database();
