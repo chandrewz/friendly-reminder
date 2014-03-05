@@ -2,11 +2,13 @@
 	require '../src/Contactor.php';
 	require '../src/Database.php';
 
+	/*
 	echo "Begin text test.\n<br/>";
 	$contactor = new Contactor();
 	$contactor->text('7133677805', 'Please work!');
 	echo "Text sent\n<br/>";
-	$contactor->call('7133677805', 'Hello Hello Hello Hello Hello');
+	$contactor->call('7133677805', 'Hello');
+	*/
 
 	$db = new Database();
 	echo $db->pgConnectionString();

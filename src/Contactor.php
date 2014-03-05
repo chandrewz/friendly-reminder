@@ -12,6 +12,7 @@ class Contactor {
 	private $sid = 'AC609c3f7d32dfb4dddf8d3b79eac93f41'; // account sid
 	private $token = 'f5fe765f35130f11b365a26059a9eed3'; // auth token
 	private $phoneNumber = '832-460-0899'; // my twilio phone number
+	private $version = '2010-04-01';
 
 	/**
 	 * context.io vars
@@ -24,7 +25,7 @@ class Contactor {
 	 * Constructor
 	 */
 	public function Contactor() {
-		$this->client = new Services_Twilio($this->sid, $this->token);
+		$this->client = new Services_Twilio($this->sid, $this->token, $this->version);
 		$this->contextIO = new ContextIO($this->key, $this->secretKey);
 	}
 
@@ -46,12 +47,12 @@ class Contactor {
 	 * Calls a number with an automated message.
 	 */
 	public function call($number, $message) {
+		//
 		// Initiate a new outbound call
 		$call = $this->client->account->calls->create(
-			$this->phoneNumber, // The number of the phone initiating the call
-			$number, // The number of the phone receiving call
+			$this->phoneNumber, // number of the phone initiating the call
+			$number, // number of the phone receiving call
 			'http://friendly-reminder.herokuapp.com/src/callXml.php?message=' . $message // The URL Twilio will request when the call is answered
 		);
-		return $call;
 	}
 }
