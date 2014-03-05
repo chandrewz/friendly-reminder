@@ -50,7 +50,7 @@ class Contactor {
 		$call = $this->client->account->calls->create(
 			$this->phoneNumber, // The number of the phone initiating the call
 			$number, // The number of the phone receiving call
-			'callXml.php?message=' . $message // The URL Twilio will request when the call is answered
+			'src/callXml.php?message=' . $message // The URL Twilio will request when the call is answered
 		);
 		return $call;
 	}
