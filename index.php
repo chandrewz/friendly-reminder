@@ -69,9 +69,9 @@
 							<div class="col-md-6 col-md-offset-3">
 								<label class="control-label">Select Reminder Option (email not supported yet!)</label>
 								<select name="option">
-									<option value="text">text</option>
-									<option value="call">call</option>
-									<option value="email">email</option>
+									<option value="text">Text</option>
+									<option value="call">Call</option>
+									<option value="email">Email</option>
 								</select>
 							</div>
 						</div>
