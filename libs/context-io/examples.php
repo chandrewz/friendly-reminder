@@ -5,7 +5,7 @@
 include_once("class.contextio.php");
 
 // see https://console.context.io/#settings to get your consumer key and consumer secret.
-$contextIO = new ContextIO('consumerKeyHere','consumerSecretHere');
+$contextIO = new ContextIO('8kppd9xb','YEj7wF0pwSF9XeyI');
 $accountId = null;
 
 // list your accounts
@@ -23,7 +23,7 @@ if (is_null($accountId)) {
 
 // EXAMPLE 1
 // Print the subject line of the last 20 emails sent to with bill@widgets.com
-$args = array('to'=>'bill@widgets.com', 'limit'=>20);
+$args = array('to'=>'chandrew@utexas.edu', 'limit'=>20);
 echo "\nGetting last 20 messages exchanged with {$args['to']}\n";
 $r = $contextIO->listMessages($accountId, $args);
 foreach ($r->getData() as $message) {

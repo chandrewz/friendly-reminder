@@ -8,12 +8,18 @@ class Database {
 	private $dbname = 'db1rn4rj1g5jdl';
 	private $db;
 
+	/**
+	 * Constructor
+	 */
 	public function Database() {
 		// CREATE TABLE reminder(reminder_id serial, reminder_type text, reminder_to text, reminder_message text, reminder_time timestamp, reminder_sent boolean);
 		// CREATE TABLE friends(friend_id serial, username text, friend_username text);
 		// CREATE TABLE users(user_id serial, username tetxt, password text, email text, phone text);
 	}
 
+	/**
+	 * Simple db connect method
+	 */
 	public function connect() {
 		$this->db = pg_connect($this->pgConnectionString());
 		if (!$this->db) return false;
@@ -21,9 +27,7 @@ class Database {
 	}
 
 	/**
-	 * postgres db connection string
-	 * return 'dbname=db1rn4rj1g5jdl host=ec2-54-197-241-94.compute-1.amazonaws.com port=5432 user=mbykljryroouwe password=2QKn-hc70AaFuxzAvwj-Mh3f22 sslmode=require';
-	 * return "dbname=$this->dbname host=$this->host port=$this->port user=$this->user password=$this->password sslmode=require";
+	 * Postgres db connection string
 	 */
 	public function pgConnectionString() {
 		return sprintf('dbname=%s host=%s port=%s user=%s password=%s sslmode=require', $this->dbname, $this->host, $this->port, $this->user, $this->password);
@@ -33,8 +37,6 @@ class Database {
 	 * Adds a reminder into the reminder table
 	 */
 	public function addReminder($type, $to, $message, $timestamp) {
-		//$query = sprintf('INSERT INTO reminder(reminder_type, reminder_to, reminder_message, reminder_time, reminder_sent) VALUES ("%s", "%s", "%s", "%s", false);',
-		//	$type, $to, $message, $timestamp);
 		$query = "INSERT INTO reminder(reminder_type, reminder_to, reminder_message, reminder_time, reminder_sent) VALUES ('$type', '$to', '$message', '$timestamp', false);";
 		return pg_query($this->db, $query);
 	}
@@ -46,18 +48,50 @@ class Database {
 	public function getReadyReminders() {
 		date_default_timezone_set('America/Chicago'); // using CST, because I'm in Austin!
 		$date = date('Y-m-d H:i:s');
-		//$query = sprintf('SELECT * FROM reminder WHERE reminder_time <= "%s" AND reminder_sent = false;', $date);
 		$query = "SELECT * FROM reminder WHERE reminder_time <= '$date' AND reminder_sent = false;";
 		return pg_query($this->db, $query);
 	}
 
+	/**
+	 * Marks reminders that have been sent.
+	 */
+	public function updateSentReminders($reminders) {
+		$query;
+		foreach ($reminders as $remind) {
+			$query .= "UPDATE reminder SET reminder_sent = true WHERE reminder_id = " . $remind['reminder_id'] . ";";
+		}
+		return pg_query($this->db, $query);
+	}
+
+	/**
+	 * Creates a friend for a user.
+	 */
 	public function addFriend($user, $friend) {
 		$query = "INSERT INTO friends(username, friend_username) VALUES ('$user', '$friend');";
 		return pg_query($this->db, $query);
 	}
 
+	/**
+	 * Given a username, returns all of the user's friends.
+	 */
 	public function getFriends($user) {
 		$query = "SELECT * FROM friends WHERE username = '$user';";
+		return pg_query($this->db, $query);
+	}
+
+	/**
+	 * Creates a new user with the paramters.
+	 */
+	public function createUser($username, $password, $email, $phone) {
+		$query = "INSERT INTO users(username, password, email, phone) VALUES ('$username', '$password', '$email', '$phone');";
+		return pg_query($this->db, $query);
+	}
+
+	/**
+	 * Given a username, returns the user from the users table.
+	 */
+	public function getUser($user) {
+		$query = "SELECT * FROM users WHERE username = '$user';";
 		return pg_query($this->db, $query);
 	}
 }

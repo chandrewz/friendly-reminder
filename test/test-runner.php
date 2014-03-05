@@ -20,7 +20,7 @@
 		$date = date('Y-m-d H:i:s');
 		echo "Current time: $date\n<br/>";
 
-		$added = $db->addReminder('text', '7133677805', 'addReminder message', $date);
+		$added = $db->addReminder('text', '8652296478', 'addReminder message', $date);
 		if ($added) echo "Reminder added\n<br/>";
 		else echo "addReminder failed\n<br/>";
 

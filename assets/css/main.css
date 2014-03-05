@@ -13,7 +13,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
   background: #f5f6f7;
-  color: #f5f6f7;
   font-size: 20px;
   line-height: 36px;
   text-align: center;
@@ -135,10 +134,10 @@ a:active {
   background: #1abc9c; }
 
 #work {
-  background: #3498db; }
+  background: #474e5d; }
 
 #networks {
-  background: #474e5d; }
+  background: #3498db; }
 
 .down-arrow {
   position: absolute;
