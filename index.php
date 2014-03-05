@@ -25,7 +25,6 @@
 		<link href="assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
 		<!-- Custom assets for this template -->
-		<script src="assets/js/controller.js"></script>
 		<link href="assets/css/main.css" rel="stylesheet">
 		<link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
@@ -63,7 +62,7 @@
 		<section id="networks">
 			<div>
 				<h1>send a reminder</h1>
-				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+				<form method="post" action="/">
 					<fieldset>
 						<input name="action" value="remind" type="hidden"/>
 						<div class="row">
@@ -86,7 +85,7 @@
 							<div class="col-md-4 col-md-offset-4">
 							<div class="input-group">
 								<label class="control-label" for="time">Pick a Time</label>
-								<input name="time" type="text" value="2014-03-01 14:45" readonly class="form_datetime form-control" size="40">
+								<input name="time" type="text" value="2014-03-01 12:00:00" readonly class="form_datetime form-control" size="40">
 								<script type="text/javascript">$(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});</script> 
 							</div>
 							</div>
