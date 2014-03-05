@@ -1,6 +1,6 @@
 <?php
-	require '../src/Contactor.php';
-	require '../src/Database.php';
+	require_once(realpath(dirname(__FILE__) . '/../src/Contactor.php'));
+	require_once(realpath(dirname(__FILE__) . '/../src/Database.php'));
 
 	/*
 	echo "Begin text test.\n<br/>";

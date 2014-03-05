@@ -1,7 +1,7 @@
 <?php
 
-require '../libs/twilio/Twilio.php'; // include the Twilio PHP library
-require '../libs/context-io/class.contextio.php'; // likewise context.io library
+require_once(realpath(dirname(__FILE__) . '/../libs/twilio/Twilio.php')); // include the Twilio PHP library
+require_once(realpath(dirname(__FILE__) . '/../libs/context-io/class.contextio.php')); // likewise context.io library
 
 class Contactor {
 
@@ -47,7 +47,6 @@ class Contactor {
 	 * Calls a number with an automated message.
 	 */
 	public function call($number, $message) {
-		//
 		// Initiate a new outbound call
 		$call = $this->client->account->calls->create(
 			$this->phoneNumber, // number of the phone initiating the call
