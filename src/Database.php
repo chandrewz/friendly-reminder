@@ -9,7 +9,9 @@ class Database {
 	private $db;
 
 	public function Database() {
-		
+		// CREATE TABLE reminder(reminder_id serial, reminder_type text, reminder_to text, reminder_message text, reminder_time timestamp, reminder_sent boolean);
+		// CREATE TABLE friends(friend_id serial, username text, friend_username text);
+		// CREATE TABLE users(user_id serial, username tetxt, password text, email text, phone text);
 	}
 
 	public function connect() {
@@ -29,7 +31,6 @@ class Database {
 
 	/**
 	 * Adds a reminder into the reminder table
-	 * init: CREATE TABLE reminder(reminder_id serial, reminder_type text, reminder_to text, reminder_message text, reminder_time timestamp, reminder_sent boolean);
 	 */
 	public function addReminder($type, $to, $message, $timestamp) {
 		//$query = sprintf('INSERT INTO reminder(reminder_type, reminder_to, reminder_message, reminder_time, reminder_sent) VALUES ("%s", "%s", "%s", "%s", false);',
@@ -50,4 +51,13 @@ class Database {
 		return pg_query($this->db, $query);
 	}
 
+	public function addFriend($user, $friend) {
+		$query = "INSERT INTO friends(username, friend_username) VALUES ('$user', '$friend');";
+		return pg_query($this->db, $query);
+	}
+
+	public function getFriends($user) {
+		$query = "SELECT * FROM friends WHERE username = '$user';";
+		return pg_query($this->db, $query);
+	}
 }
