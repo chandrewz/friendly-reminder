@@ -1,7 +1,7 @@
 <?php
 
 require '../libs/twilio/Twilio.php'; // include the Twilio PHP library
-require '../libs/context-io/class.contextio.php' // likewise context.io library
+require '../libs/context-io/class.contextio.php'; // likewise context.io library
 
 class Contactor {
 

@@ -2,26 +2,26 @@
 	require '../src/Contactor.php';
 	require '../src/Database.php';
 
-	echo 'Begin text test.';
+	echo "Begin text test.\n<br/>";
 	$contactor = new Contactor();
 	$contactor->text('7133677805', 'Please work!');
-	echo 'Text sent<br/>';
+	echo "Text sent\n<br/>";
 
 	$db = new Database();
 	echo $db->pgConnectionString();
 	$connected = $db->connect();
 	if ($connected) {
-		echo 'Connected!<br/>';
+		echo "Connected!\n<br/>";
 		date_default_timezone_set("America/Chicago");
 		$date = date('Y-m-d H:i:s');
-		echo "Current time: $date";
+		echo "Current time: $date\n<br/>";
 		$added = $db->addReminder('text', '7133677805', 'addReminder message', $date);
-		if ($added) echo 'Reminder added<br/>';
-		else echo 'addReminder failed<br/>';
+		if ($added) echo "Reminder added\n<br/>";
+		else echo "addReminder failed\n<br/>";
 
 		$ready = $db->getReadyReminders();
 		if ($ready) {
-			echo print_r(pg_fetch_all($ready, NULL, PGSQL_ASSOC));
-		} else echo 'getReadyReminders() failed<br/>';
+			echo print_r(pg_fetch_all($ready));
+		} else echo "getReadyReminders() failed\n<br/>";
 	}
-	else echo 'Not connected :(<br/>';
+	else echo "Not connected :(\n<br/>";
