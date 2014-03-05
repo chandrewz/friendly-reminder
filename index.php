@@ -4,7 +4,7 @@
 		$db = new Database();
 		$db->connect();
 		$db->addReminder($_POST['option'], $_POST['number'], $_POST['message'], $_POST['time']);
-		echo "Your $_POST['option'] to $_POST['number'] has been scheduled on $_POST['time']!";
+		echo 'Message sent!';
 	}
 ?>
 
