@@ -4,7 +4,7 @@
 		$db = new Database();
 		$db->connect();
 		$db->addReminder($_POST['option'], $_POST['number'], $_POST['message'], $_POST['time']);
-		echo 'Message sent!';
+		echo 'A ' . $_POST['option'] . ' was scheduled for ' . $_POST['number'] . ' at ' . $_POST['time'];
 	}
 ?>
 
@@ -62,7 +62,7 @@
 		<section id="networks">
 			<div>
 				<h1>send a reminder</h1>
-				<form method="post" action="/">
+				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 					<fieldset>
 						<input name="action" value="remind" type="hidden"/>
 						<div class="row">

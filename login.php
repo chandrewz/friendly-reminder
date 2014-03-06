@@ -29,7 +29,7 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Form Name</legend>
+<legend>Login</legend>
 
 <!-- Text input-->
 <div class="control-group">
