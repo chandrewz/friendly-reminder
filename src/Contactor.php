@@ -61,7 +61,7 @@ class Contactor {
 	 */
 	public function getEmailId($email) {
 		$args = array('email' => $email);
-		$r = $contextIO->listAccounts($args);
+		$r = $this->$contextIO->listAccounts($args);
 		$obj = $r->getRawResponse();
 		$json = json_decode($obj);
 		return $json[0]->{'id'};
@@ -70,7 +70,7 @@ class Contactor {
 	public function getFriendlyReminderEmails($from, $to) {
 		$accountId = $this->getEmailId($from);
 		$args = array('to'=>$to, 'subject'=>'/friendly-reminder/', 'limit'=>20);
-		$r = $contextIO->listMessages($accountId, $args);
+		$r = $this->$contextIO->listMessages($accountId, $args);
 		return $r->getRawResponse();
 	}
 }

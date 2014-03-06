@@ -41,5 +41,14 @@ $obj = $r->getRawResponse();
 $json = json_decode($obj);
 echo $json[0]->{'id'};
 
+echo getFriendlyReminderEmails('andrewsmail1@gmail.com', 'chandrew@utexas.edu', $json[0]->{'id'});
+
 echo "\nall examples finished\n";
+
+function getFriendlyReminderEmails($from, $to, $accountId) {
+	global $contextIO;
+	$args = array('to'=>$to, 'subject'=>'/friendly-reminder/', 'limit'=>20);
+	$r = $contextIO->listMessages($accountId, $args);
+	return $r->getRawResponse();
+}
 ?>
