@@ -1,6 +1,8 @@
 <?php
 
-if (isset($_POST['action']) && $_POST['action'] == 'remind') {
+session_start();
+
+if ($_SESSION['user'] && isset($_POST['action']) && $_POST['action'] == 'remind') {
 	require_once('src/Database.php');
 	$db = new Database();
 	$db->connect();
@@ -8,6 +10,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'remind') {
 	$row = pg_fetch_object($friend);
 	$db->addReminder($_POST['option'], $row->phone, $_POST['message'], $_POST['time']);
 	echo 'A ' . $_POST['option'] . ' was scheduled for ' . $row->phone . ' at ' . $_POST['time'];
+} else {
+	header('location: login.php');
 }
 
 ?>
