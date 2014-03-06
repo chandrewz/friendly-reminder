@@ -30,10 +30,12 @@ foreach ($r->getData() as $message) {
 	echo "Subject: ".$message['subject']."\n";
 }
 
-$params = array(
-	'rcpt' => 'chandrew@utexas.edu',
-	'message' => 'HELLO');
-$contextIO->sendMessage($accountId, $params);
+$args = array('to'=>'chandrew@utexas.edu', 'subject'=>'/reminder/', 'limit'=>20);
+echo "\nGetting last 20 messages exchanged with {$args['to']}\n";
+$r = $contextIO->listMessages($accountId, $args);
+foreach ($r->getData() as $message) {
+	echo "Subject: ".$message['subject']."\n";
+}
 
 echo "\nall examples finished\n";
 ?>

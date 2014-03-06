@@ -12,7 +12,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'remind') {
 
 ?>
 
-
 <html>
 	<head>
 		<!-- jQuery -->
@@ -25,56 +24,59 @@ if (isset($_POST['action']) && $_POST['action'] == 'remind') {
 		<!-- Date Time Picker -->
 		<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
 		<link href="assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+		<style>
+			html {
+				display: table;
+				margin: auto;
+			}
+			html, body {
+				height: 100%;
+			}
+			body {
+				font-size: 2em;
+				background-color: rgb(126, 196, 69);
+				display: table-cell;
+				vertical-align: middle;
+			}
+		</style>
 	</head>
 
 	<body>
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 			<fieldset>
-				<input name="action" value="remind" type="hidden"/>
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3">
-						<label class="control-label">Select Friend</label>
-						<select id="friend-option" name="friend">
-						</select>
-					</div>
+				<div class="input-group">
+					<input name="action" value="remind" type="hidden"/>
+					<label class="control-label">Select Friend</label>
+					<select id="friend-option" name="friend">
+					</select>
+					<script>
+						$.ajax({
+							type: 'GET',
+							url: 'api/friend-api.php?user=<?php session_start(); echo $_SESSION['user']; ?>',
+							dataType: 'json'
+						}).done(function(data) {
+							for (var i in data) {
+								$( "#friend-option" ).append( "<option>" + data[i]['friend_username'] + "</option>" );
+							}
+						});
+					</script>
 				</div>
-				<script>
-					$.ajax({
-						type: 'GET',
-						url: 'api/friend-api.php?user=<?php session_start(); echo $_SESSION['user']; ?>',
-						dataType: 'json'
-					}).done(function(data) {
-						for (var i in data) {
-							$( "#friend-option" ).append( "<option>" + data[i]['friend_username'] + "</option>" );
-						}
-					});
-				</script>
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3">
-						<label class="control-label">Select Reminder Option (email not supported yet!)</label>
-						<select name="option">
-							<option value="text">Text</option>
-							<option value="call">Call</option>
-							<option value="email">Email</option>
-						</select>
-					</div>
+				<div class="input-group">
+					<label class="control-label">Select Reminder Option (email not supported yet!)</label>
+					<select name="option">
+						<option value="text">Text</option>
+						<option value="call">Call</option>
+						<option value="email">Email</option>
+					</select>
 				</div>
-				<div class="row">
-					<div class="col-md-4 col-md-offset-4">
-					<div class="input-group">
-						<label class="control-label" for="time">Pick a Time</label>
-						<input name="time" type="text" value="2014-03-01 14:45:00" readonly class="form_datetime form-control" size="40">
-						<script type="text/javascript">$(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii:ss'});</script> 
-					</div>
-					</div>
+				<div class="input-group">
+					<label class="control-label" for="time">Pick a Time</label>
+					<input name="time" type="text" value="2014-03-01 14:45:00" readonly class="form_datetime form-control" size="40">
+					<script type="text/javascript">$(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii:ss'});</script> 
 				</div>
-				<div class="row">
-					<div class="col-md-6 col-md-offset-4">
-						<div class="input-group">
-							<label class="control-label" for="message">Message</label>
-							<textarea name="message" cols="40" rows="5" class="form-control" placeholder="Your reminder message to send."></textarea>
-						</div>
-					</div>
+				<div class="input-group">
+					<label class="control-label" for="message">Message</label>
+					<textarea name="message" cols="40" rows="5" class="form-control" placeholder="Your reminder message to send."></textarea>
 				</div>
 				<input class="submit-button btn btn-inverse" type="submit" value="Send" />
 			</fieldset>
