@@ -2,16 +2,16 @@
 	require_once(realpath(dirname(__FILE__) . '/../src/Contactor.php'));
 	require_once(realpath(dirname(__FILE__) . '/../src/Database.php'));
 
-	/*
+	
 	echo "Begin text test.\n<br/>";
 	$contactor = new Contactor();
-	$contactor->text('7133677805', 'Please work!');
-	echo "Text sent\n<br/>";
+	//$contactor->text('7133677805', 'Please work!');
+	//echo "Text sent\n<br/>";
+	
+	$contactor->call('7133677805', 'HELLO%20HELLO%20HELLO%20DOGE%20SHIBE');
+	
 
-	$contactor->call('7133677805', 'Hello');
-	*/
-
-	$db = new Database();
+	/*$db = new Database();
 	echo $db->pgConnectionString();
 	$connected = $db->connect();
 	if ($connected) {
@@ -32,4 +32,4 @@
 		$db->addFriend("chandrew", "jlin");
 		echo print_r(pg_fetch_all($db->getFriends("chandrew")));
 	}
-	else echo "Not connected :(\n<br/>";
+	else echo "Not connected :(\n<br/>";*/

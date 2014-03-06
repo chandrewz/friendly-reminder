@@ -56,7 +56,7 @@ class Database {
 	 * Marks reminders that have been sent.
 	 */
 	public function updateSentReminders($reminders) {
-		$query;
+		$query = "";
 		foreach ($reminders as $remind) {
 			$query .= "UPDATE reminder SET reminder_sent = true WHERE reminder_id = " . $remind['reminder_id'] . ";";
 		}

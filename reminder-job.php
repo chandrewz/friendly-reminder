@@ -20,6 +20,9 @@ if ($connected) {
 			if ($remind['reminder_type'] == 'text') {
 				$contactor->text($remind['reminder_to'], $remind['reminder_message']);
 				echo "Sent text id " . $remind['reminder_id'] . " to " . $remind['reminder_to'] . " with " . $remind['reminder_message'] . "\n";
+			} elseif ($remind['reminder_type'] == 'call') {
+				$contactor->call($remind['reminder_to'], rawurlencode($remind['reminder_message']));
+				echo "Sent call id " . $remind['reminder_id'] . " to " . $remind['reminder_to'] . " with " . $remind['reminder_message'] . "\n";
 			}
 		}
 

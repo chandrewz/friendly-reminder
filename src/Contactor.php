@@ -54,4 +54,10 @@ class Contactor {
 			'http://friendly-reminder.herokuapp.com/src/callXml.php?message=' . $message // The URL Twilio will request when the call is answered
 		);
 	}
+
+	/**
+	 * context.io's documentation is a bit confusing :(
+	 */
+	public function email() {
+	}
 }
