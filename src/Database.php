@@ -101,7 +101,7 @@ class Database {
 	}
 
 	public function select($table) {
-		$query = "SELECT * FROM $table;"
+		$query = "SELECT * FROM $table;";
 		return pg_query($this->db, $query);
 	}
 }
