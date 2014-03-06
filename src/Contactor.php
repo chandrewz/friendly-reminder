@@ -17,7 +17,7 @@ class Contactor {
 	/**
 	 * context.io vars
 	 */
-	private $contextIO; // ContextIO Object
+	public $contextIO; // ContextIO Object
 	private $key = '8kppd9xb'; // consumerKey
 	private $secretKey = 'YEj7wF0pwSF9XeyI'; // consumerSecret
 	private $accountId = '53155bc43bcc88cc716a92c5'; // andrewsmail1@gmail.com

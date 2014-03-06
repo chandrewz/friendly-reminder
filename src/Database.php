@@ -95,6 +95,14 @@ class Database {
 		return pg_query($this->db, $query);
 	}
 
+	/**
+	 * A safe version of getUser that excludes the password.
+	 */
+	public function getUserInfo($username) {
+		$query = "SELECT user_id, username, email, phone FROM users WHERE username = '$username';";
+		return pg_query($this->db, $query);
+	}
+
 	public function login($username, $password) {
 		session_start();
 		$_SESSION['user'] = $username;
