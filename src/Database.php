@@ -99,4 +99,9 @@ class Database {
 		session_start();
 		$_SESSION['user'] = $username;
 	}
+
+	public function select($table) {
+		$query = "SELECT * FROM $table;"
+		return pg_query($this->db, $query);
+	}
 }
