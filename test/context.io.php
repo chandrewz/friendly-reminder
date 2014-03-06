@@ -9,8 +9,9 @@ $contextIO = new ContextIO('8kppd9xb','YEj7wF0pwSF9XeyI');
 $accountId = null;
 
 // list your accounts
-$r = $contextIO->listAccounts();
-foreach ($r->getData() as $account) {
+$args = array('email' => 'andrewsmail1@gmail.com');
+$r = $contextIO->listAccounts($args);
+/*foreach ($r->getData() as $account) {
 	echo $account['id'] . "\t" . join(", ", $account['email_addresses']) . "\n";
 	if (is_null($accountId)) {
 		$accountId = $account['id'];
@@ -19,11 +20,11 @@ foreach ($r->getData() as $account) {
 
 if (is_null($accountId)) {
 	die;
-}
+}*/
 
 // EXAMPLE 1
 // Print the subject line of the last 20 emails sent to with bill@widgets.com
-$args = array('to'=>'chandrew@utexas.edu', 'limit'=>20);
+/*$args = array('to'=>'chandrew@utexas.edu', 'limit'=>20);
 echo "\nGetting last 20 messages exchanged with {$args['to']}\n";
 $r = $contextIO->listMessages($accountId, $args);
 foreach ($r->getData() as $message) {
@@ -35,7 +36,10 @@ echo "\nGetting last 20 messages exchanged with {$args['to']}\n";
 $r = $contextIO->listMessages($accountId, $args);
 foreach ($r->getData() as $message) {
 	echo "Subject: ".$message['subject']."\n";
-}
+}*/
+$obj = $r->getRawResponse();
+$json = json_decode($obj);
+echo $json[0]->{'id'};
 
 echo "\nall examples finished\n";
 ?>

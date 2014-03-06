@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Send in a user, get all his friends!
+ */
+
 header("Content-Type:text/plain");
 
 if (isset($_GET['user'])) {

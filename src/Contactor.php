@@ -20,6 +20,7 @@ class Contactor {
 	private $contextIO; // ContextIO Object
 	private $key = '8kppd9xb'; // consumerKey
 	private $secretKey = 'YEj7wF0pwSF9XeyI'; // consumerSecret
+	private $accountId = '53155bc43bcc88cc716a92c5'; // andrewsmail1@gmail.com
 
 	/**
 	 * Constructor
@@ -56,8 +57,20 @@ class Contactor {
 	}
 
 	/**
-	 * context.io's documentation is a bit confusing :(
+	 * Based on an email, reuturn the emailId
 	 */
-	public function email() {
+	public function getEmailId($email) {
+		$args = array('email' => $email);
+		$r = $contextIO->listAccounts($args);
+		$obj = $r->getRawResponse();
+		$json = json_decode($obj);
+		return $json[0]->{'id'};
+	}
+
+	public function getFriendlyReminderEmails($from, $to) {
+		$accountId = getEmailId($from);
+		$args = array('to'=>'chandrew@utexas.edu', 'subject'=>'/friendly-reminder/', 'limit'=>20);
+		$r = $contextIO->listMessages($accountId, $args);
+		return $r->getRawResponse();
 	}
 }

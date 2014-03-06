@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Simply returns my tables in JSON...helpful for debugging.
+ */
+
 header("Content-Type:text/plain");
 
 if (isset($_GET['table'])) {
