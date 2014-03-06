@@ -3,8 +3,9 @@
 		require_once('src/Database.php');
 		$db = new Database();
 		$db->connect();
-		$user = $db->getUser($POST['username']);
-		if ($user && pg_num_rows($user) > 0) header('Location: welcome.php');
+		$user = $db->getUser($_POST['username']);
+		$rows = pg_num_rows($user);
+		if ($user && $rows > 0) header('Location: welcome.php');
 		else exit("Bye.");
 	}
 ?>
