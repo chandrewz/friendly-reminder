@@ -32,10 +32,12 @@ while ($row = pg_fetch_object($result)) {
 	$friendEmail = $obj->{'email'};
 	echo "($friendEmail): ";
 
-	$args = array('to'=>$friendEmail, 'subject'=>'/friendly-reminder/', 'limit'=>20);
-	$r = $contactor->contextIO->listMessages($accountId, $args);
-	foreach ($r->getData() as $message) {
-		echo $message['subject'] . ", ";
+	if (!empty($friendEmail)) {
+		$args = array('to'=>$friendEmail, 'subject'=>'/friendly-reminder/', 'limit'=>20);
+		$r = $contactor->contextIO->listMessages($accountId, $args);
+		foreach ($r->getData() as $message) {
+			echo $message['subject'] . ", ";
+		}
 	}
 	echo "\n<br/>";
 }
