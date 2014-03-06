@@ -4,8 +4,8 @@
 		$db = new Database();
 		$db->connect();
 		$user = $db->getUser($POST['username']);
-		if (user) echo "Welcome $user";
-		else "Bye.";
+		if (user) header('Location: welcome.php');
+		else exit "Bye.";
 	}
 ?>
 
