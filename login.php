@@ -5,7 +5,10 @@
 		$db->connect();
 		$user = $db->getUser($_POST['username']);
 		$rows = pg_num_rows($user);
-		if ($user && $rows > 0) header('Location: welcome.php');
+		if ($user && $rows > 0) {
+			$db->login($_POST['username'], 'password');
+			header('Location: welcome.php');
+		}
 		else exit("Bye.");
 	}
 ?>

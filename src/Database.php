@@ -94,4 +94,9 @@ class Database {
 		$query = "SELECT * FROM users WHERE username = '$user';";
 		return pg_query($this->db, $query);
 	}
+
+	public function login($username, $password) {
+		session_start();
+		$_SESSION['user'] = $username;
+	}
 }
