@@ -4,8 +4,8 @@
 		$db = new Database();
 		$db->connect();
 		$user = $db->getUser($POST['username']);
-		if (user) header('Location: welcome.php');
-		else exit "Bye.";
+		if ($user) header('Location: welcome.php');
+		else exit("Bye.");
 	}
 ?>
 
@@ -24,7 +24,7 @@
 	</head>
 
 	<body>
-<form class="form-horizontal" method="post" action="/">
+<form class="form-horizontal" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <fieldset>
 
 <!-- Form Name -->
