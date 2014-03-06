@@ -68,8 +68,8 @@ class Contactor {
 	}
 
 	public function getFriendlyReminderEmails($from, $to) {
-		$accountId = getEmailId($from);
-		$args = array('to'=>'chandrew@utexas.edu', 'subject'=>'/friendly-reminder/', 'limit'=>20);
+		$accountId = $this->getEmailId($from);
+		$args = array('to'=>$to, 'subject'=>'/friendly-reminder/', 'limit'=>20);
 		$r = $contextIO->listMessages($accountId, $args);
 		return $r->getRawResponse();
 	}
