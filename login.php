@@ -4,7 +4,7 @@
 		$db = new Database();
 		$db->connect();
 		$user = $db->getUser($POST['username']);
-		if ($user) header('Location: welcome.php');
+		if ($user && pg_num_rows($user) > 0) header('Location: welcome.php');
 		else exit("Bye.");
 	}
 ?>
