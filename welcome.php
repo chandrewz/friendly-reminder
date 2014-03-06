@@ -41,7 +41,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'remind') {
 				<script>
 					$.ajax({
 						type: 'GET',
-						url: 'api/friend-api.php?user=' + <?php session_start(); echo $_SESSION['user']; ?>,
+						url: 'api/friend-api.php?user=<?php session_start(); echo $_SESSION['user']; ?>',
 						dataType: 'json'
 					}).done(function(data) {
 						for (var i in data) {
@@ -53,9 +53,9 @@ if (isset($_POST['action']) && $_POST['action'] == 'remind') {
 					<div class="col-md-6 col-md-offset-3">
 						<label class="control-label">Select Reminder Option (email not supported yet!)</label>
 						<select name="option">
-							<option>Text</option>
-							<option>Call</option>
-							<option>Email</option>
+							<option value="text">Text</option>
+							<option value="call">Call</option>
+							<option value="email">Email</option>
 						</select>
 					</div>
 				</div>
