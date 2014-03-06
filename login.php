@@ -74,7 +74,7 @@
 
 			</fieldset>
 			</form>
-
+			* Registration is closed while in BETA
 		</div>
 	</body>
 
