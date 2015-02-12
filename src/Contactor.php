@@ -9,8 +9,8 @@ class Contactor {
 	 * Twilio vars
 	 */
 	private $client; // Twilio Object
-	private $sid = 'AC609c3f7d32dfb4dddf8d3b79eac93f41'; // account sid
-	private $token = 'f5fe765f35130f11b365a26059a9eed3'; // auth token
+	private $sid = ''; // account sid
+	private $token = ''; // auth token
 	private $phoneNumber = '832-460-0899'; // my twilio phone number
 	private $version = '2010-04-01';
 
@@ -18,9 +18,9 @@ class Contactor {
 	 * context.io vars
 	 */
 	public $contextIO; // ContextIO Object
-	private $key = '8kppd9xb'; // consumerKey
-	private $secretKey = 'YEj7wF0pwSF9XeyI'; // consumerSecret
-	private $accountId = '53155bc43bcc88cc716a92c5'; // andrewsmail1@gmail.com
+	private $key = ''; // consumerKey
+	private $secretKey = ''; // consumerSecret
+	private $accountId = '';
 
 	/**
 	 * Constructor
