@@ -1,11 +1,11 @@
 <?php
 
 class Database {
-	private $host = 'ec2-54-197-241-94.compute-1.amazonaws.com';
-	private $port = '5432';
-	private $user = 'mbykljryroouwe';
-	private $password = '2QKn-hc70AaFuxzAvwj-Mh3f22';
-	private $dbname = 'db1rn4rj1g5jdl';
+	private $host = '';
+	private $port = '';
+	private $user = '';
+	private $password = '';
+	private $dbname = '';
 	private $db;
 
 	/**
