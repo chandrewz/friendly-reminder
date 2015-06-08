@@ -13,4 +13,6 @@ CREATE TABLE users(user_id serial, username tetxt, password text, email text, ph
 ```
 
 #### Cronjob
-` * * * * * php ~/git/friendly-reminder/reminder-job.php
+```
+* * * * * php ~/git/friendly-reminder/reminder-job.php
+```
